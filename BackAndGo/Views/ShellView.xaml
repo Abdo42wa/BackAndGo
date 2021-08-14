@@ -1,0 +1,69 @@
+﻿<Window x:Class="BackAndGo.Views.ShellView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BackAndGo.Views"
+        mc:Ignorable="d"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+        xmlns:cal="http://www.caliburnproject.org"
+        Title="PackAndGo" Height="550" Width="500">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="77*"/>
+            <ColumnDefinition Width="46*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.ColumnSpan="2">
+            <TextBlock Margin="20 10 0 15">Description.............</TextBlock>
+
+            <Border  BorderBrush="Black" BorderThickness="2" Height="384" Margin="10,0">
+                <Grid>
+                    <DataGrid x:Name="Files" AlternatingRowBackground="Gray" CanUserAddRows="False" AutoGenerateColumns="False">
+
+                        <DataGrid.Columns>
+                            <DataGridTextColumn  Width="200" Header="File Paht" Binding="{Binding Path= paht}" CanUserResize="False"/>
+                            <DataGridCheckBoxColumn Width="120" Header="Include" Binding="{Binding Path=include}" CanUserResize="False"/>
+                            <DataGridTemplateColumn Width="130" Header="Preview" CanUserResize="False">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button  x:Name="chkNamek" IsEnabled="{Binding Path= Canpreview}"   >
+                                            <Button.Background >
+                                                <ImageBrush ImageSource="images.jpg" Stretch="Fill" TileMode="None"/>
+                                            </Button.Background>
+                                            <i:Interaction.Triggers>
+                                                <i:EventTrigger EventName="Click">
+                                                    <cal:ActionMessage MethodName="PreviewFile">
+                                                        <!--<cal:Parameter Value="{Binding ElementName=Name, Path=Text}" />-->
+                                                    </cal:ActionMessage>
+                                                </i:EventTrigger>
+                                            </i:Interaction.Triggers>
+                                            
+                                        </Button>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+
+                    </DataGrid>
+
+                </Grid>
+
+            </Border>
+            <Border BorderBrush="Black" BorderThickness="2" Height="50" Margin="10,0">
+                <Button x:Name="GetFile" Content="{Binding GetFileButtonTitle}"  HorizontalAlignment="Left" Margin="20 10" />
+            </Border>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Button x:Name="CloseWindow" Content="{Binding CloseButtonTitle}" Grid.Column="3" Margin=" 12 0" >
+                    
+                </Button>
+                <Button x:Name="Pack" Content="{Binding PackButtonTitle}" Grid.Column="0" Margin=" 12 0"  />
+
+            </Grid>
+        </StackPanel>
+    </Grid>
+</Window>

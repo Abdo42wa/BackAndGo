@@ -21,13 +21,15 @@ namespace BackAndGo.Models
 
         public void PreviewFile()
         {
-           
-                if (Canpreview == true)
+            
+                if ( Canpreview == true)
                 {
                     Process process = new Process();
                     process.StartInfo.FileName = paht;
                     process.Start();
                 }           
         }
+
+       
     }
 }

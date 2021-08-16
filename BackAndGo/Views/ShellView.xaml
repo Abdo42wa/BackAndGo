@@ -18,17 +18,23 @@
 
             <Border  BorderBrush="Black" BorderThickness="2" Height="384" Margin="10,0">
                 <Grid>
-                    <DataGrid x:Name="Files" AlternatingRowBackground="Gray" CanUserAddRows="False" AutoGenerateColumns="False">
+                    <DataGrid RowHeight="20" x:Name="Files" AlternatingRowBackground="Gray" CanUserAddRows="False" AutoGenerateColumns="False">
 
                         <DataGrid.Columns>
-                            <DataGridTextColumn  Width="200" Header="File Paht" Binding="{Binding Path= paht}" CanUserResize="False"/>
-                            <DataGridCheckBoxColumn Width="120" Header="Include" Binding="{Binding Path=include}" CanUserResize="False"/>
-                            <DataGridTemplateColumn Width="130" Header="Preview" CanUserResize="False">
+                            <DataGridTextColumn  Width="200"    Header = "File Paht" Binding="{Binding Path= paht}" CanUserResize="False">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <i:InvokeCommandAction Command="{Binding test}" CommandParameter="ViewImportProgress" />
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </DataGridTextColumn>
+                            <DataGridCheckBoxColumn Width="120" Header = "Include" Binding="{Binding Path=include}" CanUserResize="False"/>
+                            <DataGridTemplateColumn Width="130" Header = "Preview" CanUserResize="False">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <Button  x:Name="chkNamek" IsEnabled="{Binding Path= Canpreview}"   >
+                                        <Button  x:Name="PreviewFile" IsEnabled="{Binding Path= Canpreview}" Width="50" BorderBrush="{x:Null}"   >
                                             <Button.Background >
-                                                <ImageBrush ImageSource="images.jpg" Stretch="Fill" TileMode="None"/>
+                                                <ImageBrush ImageSource="Eye.png" Stretch="Fill" TileMode="None"/>
                                             </Button.Background>
                                             <i:Interaction.Triggers>
                                                 <i:EventTrigger EventName="Click">
@@ -37,7 +43,7 @@
                                                     </cal:ActionMessage>
                                                 </i:EventTrigger>
                                             </i:Interaction.Triggers>
-                                            
+
                                         </Button>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
@@ -59,7 +65,7 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <Button x:Name="CloseWindow" Content="{Binding CloseButtonTitle}" Grid.Column="3" Margin=" 12 0" >
-                    
+
                 </Button>
                 <Button x:Name="Pack" Content="{Binding PackButtonTitle}" Grid.Column="0" Margin=" 12 0"  />
 

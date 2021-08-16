@@ -126,9 +126,17 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Resource Include="Images\images.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\eye-outline-vector-icon--free-medical-icons-27.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\eye-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\Eye.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

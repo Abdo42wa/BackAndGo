@@ -124,24 +124,7 @@ namespace BackAndGo.ViewModels
 
 
 
-        public void PreviewFile()
-        {
-            
-            foreach (var item in Files)
-            {
-                if (item.Canpreview == true)
-                {
-                    Process process = new Process();
-                    process.StartInfo.FileName = item.paht;
-                    process.Start();
-
-                    Console.WriteLine("wow");
-                }
-
-
-            }
-
-        }
+        
 
 
 
